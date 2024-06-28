@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="sidebar">
+    <div class="block">
+      <h2>Дата записи</h2>
+      <input type="date" [(ngModel)]="selectedDate" (ngModelChange)="loadSchedules()">
+    </div>
+    <div class="block-divider"></div>
+    <div class="block">
+      <h2>Специалисты</h2>
+      <input type="text" placeholder="Поиск" [(ngModel)]="filter" (input)="filterSpecialists()">
+      <div class="specialists-list">
+        <p-table [value]="filteredSpecialists" selectionMode="multiple" [(selection)]="selectedSpecialists" (onSelectionChange)="onSelectionChange($event)">
+          <ng-template pTemplate="body" let-specialist>
+            <tr>
+              <td>
+                <p-checkbox [(ngModel)]="specialist.selected" binary="true" (onChange)="onSelectionChange($event)"></p-checkbox>
+              </td>
+              <td>{{ specialist.name }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <button pButton type="button" label="Перейти к аналитике" (click)="goToAnalytics()"></button>
+  </div>
+  <div class="main-content">
+    <div class="block">
+      <h1>Расписание специалистов</h1>
+      <div class="schedule-grid">
+        <div *ngFor="let specialist of selectedSpecialists" class="specialist-column">
+          <div class="specialist-header">{{ specialist.name }} ({{ formatDate(selectedDate) }})</div>
+          <div *ngFor="let slot of getScheduleForSpecialist(specialist)" class="schedule-slot" [ngClass]="{ 'booked': slot.booked }" (click)="slot.booked ? viewAppointment(slot) : createAppointment(specialist, slot)">
+            <span class="time">{{ slot.time }}</span><br>
+            <span *ngIf="slot.booked" class="patient">{{ slot.patient }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p-dialog header="Запись на прием" [(visible)]="displayDialog" [modal]="true" [closable]="false" [responsive]="true" [style]="{width: '300px'}">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="date">Дата</label>
+        <input id="date" type="text" [(ngModel)]="appointment.date" name="date" disabled>
+      </div>
+      <div class="p-field">
+        <label for="time">Время</label>
+        <input id="time" type="text" [(ngModel)]="appointment.time" name="time" disabled>
+      </div>
+      <div class="p-field">
+        <label for="specialist">Специалист</label>
+        <input id="specialist" type="text" [value]="appointment.specialist.name || ''" name="specialist" disabled>
+      </div>
+      <div class="p-field">
+        <label for="lastName">Фамилия</label>
+        <input id="lastName" type="text" [(ngModel)]="appointment.lastName" name="lastName">
+      </div>
+      <div class="p-field">
+        <label for="firstName">Имя</label>
+        <input id="firstName" type="text" [(ngModel)]="appointment.firstName" name="firstName">
+      </div>
+      <div class="p-field">
+        <label for="middleName">Отчество</label>
+        <input id="middleName" type="text" [(ngModel)]="appointment.middleName" name="middleName">
+      </div>
+    </div>
+    <div class="p-dialog-footer">
+      <button type="button" pButton icon="pi pi-check" label="Сохранить" (click)="saveAppointment()"></button>
+      <button type="button" pButton icon="pi pi-times" label="Отмена" class="ui-button-secondary" (click)="cancelAppointment()"></button>
+    </div>
+  </p-dialog>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

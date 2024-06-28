@@ -1,0 +1,189 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-right: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.block {
+  margin-bottom: 20px;
+}
+
+.block-divider {
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.block h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.specialists-list {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.schedule-grid {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.specialist-column {
+  flex: 0 0 200px; 
+  margin-right: 20px;
+}
+
+.specialist-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  background-color: #f8f8f8;
+  z-index: 1;
+  padding: 10px;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.schedule-slot {
+  width: 200px;
+  height: 50px; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+}
+
+.schedule-slot.booked {
+  background-color: lightgreen;
+}
+
+.schedule-slot .time {
+  font-weight: bold;
+}
+
+.schedule-slot.booked .time {
+  display: none;
+}
+
+.schedule-slot .patient {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+}
+
+.p-field {
+  margin-bottom: 1em;
+}
+
+.p-field label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.p-field input {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.p-dialog-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.p-dialog-footer button {
+  width: 48%;
+  padding: 0.7em 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75em; 
+  white-space: nowrap;
+}
+
+.p-dialog-footer button:first-child {
+  background-color: #007bff;
+  color: white;
+}
+
+.p-dialog-footer button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+.sidebar button {
+  width: calc(100% - 1em); 
+  margin: 1em;
+  padding: 0.7em 0;
+  font-size: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="main-content">
+    <h1>Анализ данных</h1>
+    <div class="button-container">
+      <button pButton type="button" label="Вернуться к специалистам" (click)="goBack()"></button>
+    </div>
+    <div class="chart-container">
+      <div echarts [options]="hourlyLoadChartOptions" class="chart"></div>
+    </div>
+    <div class="chart-container">
+      <div echarts [options]="specialistsLoadChartOptions" class="chart"></div>
+    </div>
+    <div class="chart-container">
+      <div echarts [options]="monthlyLoadChartOptions" class="chart"></div>
+    </div>
+  </div>
+</div>
